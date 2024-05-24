@@ -6,5 +6,7 @@
     "goHome": "Go Home",
     "body": "Page not found"
   },
-  "home": {}
+  "home": {
+    "welcome": "Welcome"
+  }
 }

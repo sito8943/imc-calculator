@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import loadable from "@loadable/component";
 
@@ -14,11 +14,17 @@ const Home = loadable(() => import("./views/Home"));
 const NotFound = loadable(() => import("./views/NotFound"));
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
   return (
     <Suspense>
       <Handler>
         <SplashScreen
-          visible
+          visible={loading}
           logo={
             <div>
               <h1 className="font-bold text-4xl text-plight logo">
