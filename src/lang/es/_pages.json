@@ -1,0 +1,10 @@
+{
+  "routes": {
+    "home": "Inicio"
+  },
+  "notFound": {
+    "goHome": "Ir al inicio",
+    "body": "No se encuentra la página"
+  },
+  "home": {}
+}

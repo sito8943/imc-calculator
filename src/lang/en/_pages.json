@@ -1,0 +1,10 @@
+{
+  "routes": {
+    "home": "Home"
+  },
+  "notFound": {
+    "goHome": "Go Home",
+    "body": "Page not found"
+  },
+  "home": {}
+}
