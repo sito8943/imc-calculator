@@ -4,9 +4,25 @@
   },
   "notFound": {
     "goHome": "Go Home",
-    "body": "Page not found"
+    "body": "Ups! Page not found"
   },
   "home": {
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "types": {
+      "breakfast": "Breakfast",
+      "lunch": "Lunch",
+      "dinner": "Dinner",
+      "snaps": "Snaps"
+    },
+    "moreInfo": "More information"
+  },
+  "type": {
+    "title": "Did you know?",
+    "types": {
+      "breakfast": "What did you have for breakfast today?",
+      "lunch": "What did you have for breakfast today?",
+      "dinner": "What did you have for breakfast today?",
+      "snaps": "What snacks have you had today?"
+    }
   }
 }

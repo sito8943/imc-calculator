@@ -1,4 +1,13 @@
 {
-  "ariaLabels": {},
+  "names": {
+    "buttons": {
+      "goHome": "Ir al inicio"
+    }
+  },
+  "ariaLabels": {
+    "buttons": {
+      "goHome": "Haz click para ir al inicio"
+    }
+  },
   "buttons": {}
 }

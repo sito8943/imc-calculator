@@ -11,6 +11,7 @@ import View from "./layouts/View";
 
 // views
 const Home = loadable(() => import("./views/Home"));
+const Type = loadable(() => import("./views/Type"));
 const NotFound = loadable(() => import("./views/NotFound"));
 
 const App = () => {
@@ -27,7 +28,7 @@ const App = () => {
           visible={loading}
           logo={
             <div>
-              <h1 className="font-bold text-4xl text-plight logo">
+              <h1 className="font-bold text-2xl logo">
                 IMC Calculator
               </h1>
             </div>
@@ -38,6 +39,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<View />}>
               <Route path="/" element={<Home />} />
+              <Route path="/types/:type" element={<Type />} />
             </Route>
             <Route path="/*" element={<NotFound />} />
           </Routes>

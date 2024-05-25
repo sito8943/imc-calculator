@@ -27,12 +27,21 @@ export default {
     },
     colors: {
       primary: "#195075",
-      dark: { dark: "#101010", default: "#303030", light: "#4e4e4e" },
-      light: { dark: "#e1e1e1", default: "#ededed", light: "#f7f7f7" },
+      dark: "#101010",
+      light: "#f7f7f7",
     },
     extend: {
+      maxWidth: {
+        60: "240px",
+        75: "300px",
+      },
+      width: {
+        66: "264px",
+        60: "240px",
+      },
       height: {
         15: "60px",
+        66: "264px",
       },
     },
   },

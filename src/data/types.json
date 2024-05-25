@@ -1,0 +1,14 @@
+{
+  "types": {
+    "breakfast": [
+      { "text": "Pan" },
+      { "text": "Tortilla" },
+      { "text": "Huevo hervido" },
+      { "text": "Galletas" },
+      { "text": "Leche" }
+    ],
+    "lunch": [],
+    "dinner": [],
+    "snaps": []
+  }
+}
