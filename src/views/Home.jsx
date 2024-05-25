@@ -12,11 +12,11 @@ function Home() {
   return (
     <main className="mt-20 p-3 pb-10">
       <section id="pie-chart" className="w-full">
-        <div className="flex flex-col items-start justify-start gap-5 w-full max-w-75">
+        <div className="flex flex-col items-start justify-start gap-5 w-full">
           <h2 className="text-3xl sm:text-xl">
             {t("_pages:home.welcome")} {userName}
           </h2>
-          <div className="w-full max-w-75 h-66 mb-5">
+          <div className="w-full max-w-75 h-66 m-auto mb-5">
             <LPieChart
               data={[
                 { title: "One", value: 10, color: "#FFC745" },

@@ -11,7 +11,7 @@ function Type() {
   return (
     <main className="mt-20 p-3 pb-10">
       <section id="header" className="w-full">
-        <div className="flex flex-col items-start justify-start gap-5 w-full max-w-75">
+        <div className="flex flex-col items-start justify-start gap-5 w-full">
           <h2 className="w-full">{t(`_pages:type.types.${type}`)}</h2>
         </div>
       </section>
