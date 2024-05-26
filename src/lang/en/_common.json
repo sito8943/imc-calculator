@@ -1,12 +1,20 @@
 {
   "names": {
     "buttons": {
-      "goHome": "Ir al inicio"
+      "toggleMode": "Toggle Mode",
+      "back": "back",
+      "goHome": "home-link",
+      "closeMenu": "close-menu",
+      "userMenu": "user-menu"
     }
   },
   "ariaLabels": {
     "buttons": {
-      "goHome": "Haz click para ir al inicio"
+      "toggleMode": "Click to toggle color mode",
+      "back": "Click to go back",
+      "goHome": "Click to go home page",
+      "closeMenu": "Click to close user menu",
+      "userMenu": "Click to open user menu"
     }
   },
   "buttons": {}
