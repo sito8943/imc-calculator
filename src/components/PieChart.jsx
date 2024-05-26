@@ -31,7 +31,7 @@ export function LPieChart(props) {
         label={({ dataEntry }) => Math.round(dataEntry.percentage) + "%"}
         labelPosition={100 - 60 / 2}
         labelStyle={{
-          fill: "#fff",
+          fill: "#222",
           opacity: 0.75,
           pointerEvents: "none",
         }}
