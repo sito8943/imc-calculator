@@ -29,7 +29,7 @@ const App = () => {
           logo={
             <div>
               <h1 className="font-bold text-2xl logo">
-                IMC Calculator
+                EatSmart
               </h1>
             </div>
           }
