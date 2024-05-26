@@ -6,6 +6,27 @@
     "goHome": "Go Home",
     "body": "Ups! Page not found"
   },
+  "sidebar": {
+    "mode": "Application Color mode",
+    "inputs": {
+      "userName": {
+        "name": "user-name",
+        "placeholder": "ex: Jorge Pérez"
+      },
+      "size": {
+        "name": "size",
+        "label": "Size"
+      },
+      "weight": {
+        "name": "weight",
+        "label": "Weight"
+      },
+      "bmi": {
+        "name": "bmi",
+        "label": "BMI"
+      }
+    }
+  },
   "home": {
     "welcome": "Welcome",
     "types": {
