@@ -13,7 +13,7 @@ function Home() {
     <main className="mt-20 p-3 pb-10">
       <section id="pie-chart" className="w-full">
         <div className="flex flex-col items-start justify-start gap-5 w-full">
-          <h2 className="text-3xl sm:text-xl">
+          <h2 className="text-primary text-3xl sm:text-xl">
             {t("_pages:home.welcome")} {userName}
           </h2>
           <div className="w-full max-w-75 h-66 m-auto mb-5">
@@ -58,7 +58,7 @@ function Home() {
           </Link>
           <Link
             to="/more-info"
-            className="w-full outlined primary button cursor-pointer"
+            className="w-full outlined primary button cursor-pointer dark:!text-light"
           >
             {t("_pages:home.moreInfo")}
           </Link>
