@@ -4,7 +4,9 @@ const {
   VITE_USER,
 } = import.meta.env;
 
-export const config = {
+const config = {
   language: VITE_LANGUAGE,
   user: VITE_USER,
 };
+
+export default config;
