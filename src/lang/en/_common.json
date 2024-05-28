@@ -1,7 +1,13 @@
 {
   "names": {
+    "inputs": {
+      "userName": "user-name",
+      "size": "size",
+      "weight": "weight",
+      "bmi": "bmi"
+    },
     "buttons": {
-      "toggleMode": "Toggle Mode",
+      "toggleMode": "toggle-mode",
       "back": "back",
       "goHome": "home-link",
       "closeMenu": "close-menu",
@@ -17,5 +23,6 @@
       "userMenu": "Click to open user menu"
     }
   },
+  "noName": "Nameless",
   "buttons": {}
 }
