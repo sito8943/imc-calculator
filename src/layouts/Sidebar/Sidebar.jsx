@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDebounce } from "use-lodash-debounce";
 
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,12 +10,16 @@ import { faClose, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 // @sito/ui
 import { IconButton, InputControl, useMode } from "@sito/ui";
 
+// providers
+import { useAccount } from "../../providers/AccountProvider";
+
 // images
 import noUser from "../../assets/user-no-image.webp";
 
 function Sidebar(props) {
   const { t } = useTranslation();
 
+  const { updateAttribute } = useAccount();
   const { mode, toggleMode } = useMode();
 
   const { open, onClose } = props;
@@ -24,18 +29,34 @@ function Sidebar(props) {
     else document.body.style.overflow = "auto";
   }, [open]);
 
-  const [userName, setUserName] = useState("Sito");
-  const handleUserName = (e) => setUserName(e.target.value);
+  const [userName, setUserName] = useState("Nameless");
+  const debouncedUserName = useDebounce(size, 800);
+
+  useEffect(() => {
+    updateAttribute("userName", debouncedUserName);
+  }, [debouncedUserName, updateAttribute]);
 
   // form
   const [size, setSize] = useState("");
-  const handleSize = (e) => setSize(e.target.value);
+  const debouncedSize = useDebounce(size, 800);
+
+  useEffect(() => {
+    updateAttribute("size", debouncedSize);
+  }, [debouncedSize, updateAttribute]);
 
   const [weight, setWeight] = useState("");
-  const handleWeight = (e) => setWeight(e.target.value);
+  const debouncedWeight = useDebounce(weight, 800);
+
+  useEffect(() => {
+    updateAttribute("weight", debouncedWeight);
+  }, [debouncedWeight, updateAttribute]);
 
   const [bmi, setBmi] = useState("");
-  const handleBmi = (e) => setBmi(e.target.value);
+  const debouncedBmi = useDebounce(bmi, 800);
+
+  useEffect(() => {
+    updateAttribute("bmi", debouncedBmi);
+  }, [debouncedBmi, updateAttribute]);
 
   return (
     <div
@@ -60,34 +81,34 @@ function Sidebar(props) {
             <img className="w-20 rounded-full" src={noUser} alt="user-image" />
             <InputControl
               id="user"
-              name={t("_")}
+              name={t("_common:names.inputs.userName")}
               value={userName}
               placeholder={t("_pages:sidebar.inputs.userName.placeholder")}
-              onChange={handleUserName}
+              onChange={(e) => setUserName(e.target.value)}
             />
           </div>
 
           <form className="flex flex-col items-start justify-start gap-3 mt-10 w-full">
             <InputControl
               id="size"
-              name="size"
+              name={t("_common:names.inputs.size")}
               value={size}
               label={t("_pages:sidebar.inputs.size.label")}
-              onChange={handleSize}
+              onChange={(e) => setSize(e.target.value)}
             />
             <InputControl
               id="weight"
-              name="weight"
+              name={t("_common:names.inputs.weight")}
               value={weight}
               label={t("_pages:sidebar.inputs.weight.label")}
-              onChange={handleWeight}
+              onChange={(e) => setWeight(e.target.value)}
             />
             <InputControl
               id="bmi"
-              name="bmi"
+              name={t("_common:names.inputs.bmi")}
               value={bmi}
               label={t("_pages:sidebar.inputs.bmi.label")}
-              onChange={handleBmi}
+              onChange={(e) => setBmi(e.target.value)}
             />
           </form>
           <div className="flex items-center justify-start gap-3">
