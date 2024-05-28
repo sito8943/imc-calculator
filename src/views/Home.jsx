@@ -4,27 +4,54 @@ import { Link } from "react-router-dom";
 // components
 import { LPieChart } from "../components/PieChart";
 
+// providers
+import { useAccount } from "../providers/AccountProvider";
+
 function Home() {
   const { t } = useTranslation();
 
-  const userName = "Sito";
+  const { account } = useAccount();
 
   return (
-    <main className="mt-20 p-3 pb-10">
+    <main className="w-[95%] mx-auto mt-20 pt-3 pb-10">
       <section id="pie-chart" className="w-full">
         <div className="flex flex-col items-start justify-start gap-5 w-full">
           <h2 className="text-primary text-3xl sm:text-xl">
-            {t("_pages:home.welcome")} {userName}
+            {t("_pages:home.welcome")} {account?.user?.userName ?? t("_common:noName")}
           </h2>
-          <div className="w-full max-w-75 h-66 m-auto mb-5">
-            <LPieChart
-              data={[
-                { title: "One", value: 10, color: "#FFC745" },
-                { title: "Two", value: 15, color: "#C0C1FB" },
-                { title: "Three", value: 20, color: "#FEB1C0" },
-              ]}
-            />
-          </div>
+          {account?.user?.calories ||
+          account?.user?.proteins ||
+          account?.user?.lib ||
+          account?.user?.lib ? (
+            <div className="w-full max-w-75 h-66 m-auto mb-5">
+              <LPieChart
+                data={[
+                  {
+                    title: t("_pages:home.points.calories"),
+                    value: account?.user?.calories ?? 0,
+                    color: "#FFC745",
+                  },
+                  {
+                    title: t("_pages:home.points.proteins"),
+                    value: account?.user?.proteins ?? 0,
+                    color: "#C0C1FB",
+                  },
+                  {
+                    title: t("_pages:home.points.lipids"),
+                    value: account?.user?.lib ?? 0,
+                    color: "#FEB1C0",
+                  },
+                  {
+                    title: t("_pages:home.points.carbohydrates"),
+                    value: account?.user?.lib ?? 0,
+                    color: "#FEB1C0",
+                  },
+                ]}
+              />
+            </div>
+          ) : (
+            <p>{t("_pages:home.noData")}</p>
+          )}
         </div>
       </section>
       <section id="food" className="mt-10 w-full">
