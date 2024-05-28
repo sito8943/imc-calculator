@@ -35,6 +35,13 @@
       "dinner": "Dinner",
       "snaps": "Snaps"
     },
+    "points": {
+      "calories": "Calories",
+      "proteins": "Proteins",
+      "lipids": "Lipids",
+      "carbohydrates": "Carbohydrates"
+    },
+    "noData": "No data registered",
     "moreInfo": "More information"
   },
   "type": {
