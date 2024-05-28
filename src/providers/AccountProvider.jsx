@@ -34,6 +34,15 @@ const AccountProvider = (props) => {
     toLocal(config.user, data);
   }, []);
 
+  const updateAttribute = useCallback(
+    (attribute, value) => {
+      const data = { ...account };
+      data.user[attribute] = value;
+      toLocal(config.user, data);
+    },
+    [account]
+  );
+
   const fetchSession = useCallback(async () => {
     try {
       const data = fromLocal(config.user, "object");
@@ -52,6 +61,7 @@ const AccountProvider = (props) => {
     account,
     updateUser,
     fetchSession,
+    updateAttribute,
   };
   return (
     <AccountContext.Provider value={value}>{children}</AccountContext.Provider>
