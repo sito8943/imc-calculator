@@ -37,7 +37,11 @@ const AccountProvider = (props) => {
   const updateAttribute = useCallback(
     (attribute, value) => {
       const data = { ...account };
-      data.user[attribute] = value;
+      if (data.user) data.user[attribute] = value;
+      else {
+        data.user = {};
+        data.user[attribute] = value;
+      }
       toLocal(config.user, data);
     },
     [account]
