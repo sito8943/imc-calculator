@@ -24,5 +24,11 @@
     }
   },
   "noName": "Nameless",
+  "bmiResults": {
+    "underweight": "Underweight",
+    "normal weight": "Normal weight",
+    "overweight": "Overweight",
+    "obesity": "Obesity"
+  },
   "buttons": {}
 }
