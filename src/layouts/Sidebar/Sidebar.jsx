@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDebounce } from "use-lodash-debounce";
 
@@ -19,7 +19,7 @@ import noUser from "../../assets/user-no-image.webp";
 function Sidebar(props) {
   const { t } = useTranslation();
 
-  const { updateAttribute } = useAccount();
+  const { account, updateAttribute } = useAccount();
   const { mode, toggleMode } = useMode();
 
   const { open, onClose } = props;
@@ -29,30 +29,71 @@ function Sidebar(props) {
     else document.body.style.overflow = "auto";
   }, [open]);
 
-  const [userName, setUserName] = useState("Nameless");
-  const debouncedUserName = useDebounce(size, 800);
+  const [userName, setUserName] = useState(
+    account?.user?.userName ?? "Nameless"
+  );
+  const debouncedUserName = useDebounce(userName, 800);
 
   useEffect(() => {
     updateAttribute("userName", debouncedUserName);
   }, [debouncedUserName, updateAttribute]);
 
   // form
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState(account?.user?.size ?? "");
   const debouncedSize = useDebounce(size, 800);
 
   useEffect(() => {
     updateAttribute("size", debouncedSize);
   }, [debouncedSize, updateAttribute]);
 
-  const [weight, setWeight] = useState("");
+  const [weight, setWeight] = useState(account?.user?.weigh ?? "");
   const debouncedWeight = useDebounce(weight, 800);
 
   useEffect(() => {
     updateAttribute("weight", debouncedWeight);
   }, [debouncedWeight, updateAttribute]);
 
-  const [bmi, setBmi] = useState("");
+  const [bmi, setBmi] = useState(account?.user?.bmi ?? "");
   const debouncedBmi = useDebounce(bmi, 800);
+
+  useEffect(() => {
+    setBmi(weight / (size * size));
+  }, [weight, size]);
+
+  const bmiResult = useMemo(() => {
+    console.log(
+      bmi,
+      bmi < 18.5,
+      bmi > 18.5 && bmi < 24.9,
+      bmi > 25 && bmi < 29.9,
+      bmi >= 30
+    );
+
+    if (!Number.isNaN(bmi))
+      switch (true) {
+        case bmi < 18.5:
+          return "underweight";
+        case bmi > 18.5 && bmi < 24.9:
+          return "normal";
+        case bmi > 25 && bmi < 29.9:
+          return "overweight";
+        case bmi >= 30:
+          return "obesity";
+      }
+    return "";
+  }, [bmi]);
+
+  const bmiResultStyle = useMemo(() => {
+    switch (bmiResult) {
+      case "normal":
+        return "text-good";
+      case "underweight":
+      case "overweight":
+        return "text-warning";
+      case "obesity":
+        return "text-error";
+    }
+  }, [bmiResult]);
 
   useEffect(() => {
     updateAttribute("bmi", debouncedBmi);
@@ -65,7 +106,7 @@ function Sidebar(props) {
       }`}
     >
       <aside
-        className={`h-full max-w-66 bg-primary/70 transition duration-500 ease-in-out ${
+        className={`h-full max-w-66 bg-primary/80 transition duration-500 ease-in-out ${
           open ? "translate-x-0" : "-translate-x-[100%]"
         }`}
       >
@@ -95,6 +136,7 @@ function Sidebar(props) {
               value={size}
               label={t("_pages:sidebar.inputs.size.label")}
               onChange={(e) => setSize(e.target.value)}
+              labelClassName="text-light"
             />
             <InputControl
               id="weight"
@@ -102,13 +144,20 @@ function Sidebar(props) {
               value={weight}
               label={t("_pages:sidebar.inputs.weight.label")}
               onChange={(e) => setWeight(e.target.value)}
+              labelClassName="text-light"
             />
             <InputControl
               id="bmi"
               name={t("_common:names.inputs.bmi")}
-              value={bmi}
+              value={Number.isNaN(bmi) ? "" : bmi}
+              readOnly
               label={t("_pages:sidebar.inputs.bmi.label")}
               onChange={(e) => setBmi(e.target.value)}
+              labelClassName="text-light"
+              helperText={
+                bmiResult.length ? t(`_common:bmiResults.${bmiResult}`) : ""
+              }
+              helperTextClassName={bmiResultStyle}
             />
           </form>
           <div className="flex items-center justify-start gap-3">
