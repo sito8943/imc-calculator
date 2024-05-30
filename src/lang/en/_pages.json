@@ -46,6 +46,9 @@
   },
   "type": {
     "title": "Did you know?",
+    "search": {
+      "placeholder": "type here to search..."
+    },
     "types": {
       "breakfast": "What did you have for breakfast today?",
       "lunch": "What did you have for breakfast today?",

@@ -4,7 +4,8 @@
       "userName": "user-name",
       "size": "size",
       "weight": "weight",
-      "bmi": "bmi"
+      "bmi": "bmi",
+      "search": "search"
     },
     "buttons": {
       "toggleMode": "toggle-mode",
