@@ -2,10 +2,11 @@
   "names": {
     "inputs": {
       "userName": "user-name",
-      "size": "size",
+      "height": "height",
       "weight": "weight",
       "bmi": "bmi",
-      "search": "search"
+      "search": "search",
+      "counter": "counter"
     },
     "buttons": {
       "toggleMode": "toggle-mode",
@@ -25,6 +26,11 @@
     }
   },
   "noName": "Nameless",
+  "types": {
+    "eat": "Count",
+    "drink": "Liters",
+    "portion": "Portions"
+  },
   "bmiResults": {
     "underweight": "Underweight",
     "normal weight": "Normal weight",
