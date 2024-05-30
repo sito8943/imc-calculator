@@ -126,6 +126,7 @@ function Sidebar(props) {
               id="height"
               name={t("_common:names.inputs.height")}
               value={height}
+              type="number"
               label={t("_pages:sidebar.inputs.height.label")}
               onChange={(e) => setHeight(e.target.value)}
               labelClassName="text-light"
@@ -134,6 +135,7 @@ function Sidebar(props) {
               id="weight"
               name={t("_common:names.inputs.weight")}
               value={weight}
+              type="number"
               label={t("_pages:sidebar.inputs.weight.label")}
               onChange={(e) => setWeight(e.target.value)}
               labelClassName="text-light"
@@ -143,6 +145,7 @@ function Sidebar(props) {
               name={t("_common:names.inputs.bmi")}
               value={Number.isNaN(bmi) ? "" : bmi}
               readOnly
+              type="number"
               label={t("_pages:sidebar.inputs.bmi.label")}
               onChange={(e) => setBmi(e.target.value)}
               labelClassName="text-light"
