@@ -33,7 +33,7 @@
   },
   "bmiResults": {
     "underweight": "Underweight",
-    "normal weight": "Normal weight",
+    "normal": "Normal weight",
     "overweight": "Overweight",
     "obesity": "Obesity"
   },
