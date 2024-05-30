@@ -29,6 +29,9 @@ export default {
       primary: "#195075",
       dark: "#101010",
       light: "#f7f7f7",
+      success: "#4CAF50",
+      warning: "#FFC107",
+      error: "#FF5722",
     },
     extend: {
       maxWidth: {
