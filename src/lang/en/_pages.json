@@ -13,9 +13,9 @@
         "name": "user-name",
         "placeholder": "ex: Jorge Pérez"
       },
-      "size": {
-        "name": "size",
-        "label": "Size (m)"
+      "height": {
+        "name": "height",
+        "label": "Height (m)"
       },
       "weight": {
         "name": "weight",
@@ -48,6 +48,10 @@
     "title": "Did you know?",
     "search": {
       "placeholder": "type here to search..."
+    },
+    "modal": {
+      "eat": "How many {{food}} have you eat?",
+      "drink": "How many {{food}} have you drink?"
     },
     "types": {
       "breakfast": "What did you have for breakfast today?",
