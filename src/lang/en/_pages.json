@@ -15,11 +15,11 @@
       },
       "size": {
         "name": "size",
-        "label": "Size"
+        "label": "Size (m)"
       },
       "weight": {
         "name": "weight",
-        "label": "Weight"
+        "label": "Weight (kg)"
       },
       "bmi": {
         "name": "bmi",
