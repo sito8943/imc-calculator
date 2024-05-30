@@ -39,12 +39,12 @@ function Sidebar(props) {
   }, [debouncedUserName, updateAttribute]);
 
   // form
-  const [size, setSize] = useState(account?.user?.size ?? "");
-  const debouncedSize = useDebounce(size, 800);
+  const [height, setHeight] = useState(account?.user?.height ?? "");
+  const debouncedHeight = useDebounce(height, 800);
 
   useEffect(() => {
-    updateAttribute("size", debouncedSize);
-  }, [debouncedSize, updateAttribute]);
+    updateAttribute("height", debouncedHeight);
+  }, [debouncedHeight, updateAttribute]);
 
   const [weight, setWeight] = useState(account?.user?.weight ?? "");
   const debouncedWeight = useDebounce(weight, 800);
@@ -57,8 +57,8 @@ function Sidebar(props) {
   const debouncedBmi = useDebounce(bmi, 800);
 
   useEffect(() => {
-    setBmi(weight / (size * size));
-  }, [weight, size]);
+    setBmi(weight / (height * height));
+  }, [weight, height]);
 
   const bmiResult = useMemo(() => {
     if (!Number.isNaN(bmi))
@@ -78,7 +78,7 @@ function Sidebar(props) {
   const bmiResultStyle = useMemo(() => {
     switch (bmiResult) {
       case "normal":
-        return "text-good";
+        return "text-success";
       case "underweight":
       case "overweight":
         return "text-warning";
@@ -93,7 +93,7 @@ function Sidebar(props) {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-screen w-full dark:bg-dark/70 backdrop-blur-md transition duration-300 ease-in-out ${
+      className={`z-10 fixed top-0 left-0 h-screen w-full dark:bg-dark/70 backdrop-blur-md transition duration-300 ease-in-out ${
         open ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
@@ -123,11 +123,11 @@ function Sidebar(props) {
 
           <form className="flex flex-col items-start justify-start gap-3 mt-10 w-full">
             <InputControl
-              id="size"
-              name={t("_common:names.inputs.size")}
-              value={size}
-              label={t("_pages:sidebar.inputs.size.label")}
-              onChange={(e) => setSize(e.target.value)}
+              id="height"
+              name={t("_common:names.inputs.height")}
+              value={height}
+              label={t("_pages:sidebar.inputs.height.label")}
+              onChange={(e) => setHeight(e.target.value)}
               labelClassName="text-light"
             />
             <InputControl
