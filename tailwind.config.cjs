@@ -25,15 +25,31 @@ export default {
       xs: { max: "383px" },
       // => @media (max-width: 383px) { ... }
     },
-    colors: {
-      primary: "#195075",
-      dark: "#101010",
-      light: "#f7f7f7",
-      success: "#4CAF50",
-      warning: "#FFC107",
-      error: "#FF5722",
-    },
+
     extend: {
+      colors: {
+        primary: "#195075",
+        dark: "#101010",
+        light: "#f7f7f7",
+        success: "#4CAF50",
+        warning: "#FFC107",
+        error: "#FF5722",
+      },
+      keyframes: {
+        "fade-in": {
+          "0%": { opacity: "0%" },
+          "100%": { opacity: "100%" },
+        },
+        "scale-in": {
+          "0%": { transform: "scale(0)" },
+          "80%": { transform: "scale(1.10)" },
+          "100%": { transform: "scale(1)" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 0.2s ease-in-out",
+        "scale-in": "scale-in 0.3s ease-in-out",
+      },
       maxWidth: {
         60: "240px",
         75: "300px",
