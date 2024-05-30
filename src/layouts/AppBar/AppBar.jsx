@@ -16,7 +16,7 @@ function AppBar(props) {
   const location = useLocation();
 
   return (
-    <header className="w-[95%] h-15 rounded-md backdrop-blur-xl bg-primary/50 fixed top-3 left-[50%] -translate-x-[50%]">
+    <header className="z-10 w-[95%] h-15 rounded-md backdrop-blur-xl bg-primary/50 fixed top-3 left-[50%] -translate-x-[50%]">
       <div className="flex items-center justify-between h-full w-full px-3 gap-3">
         <div className="flex items-center justify-start gap-3">
           {location.pathname != "/" && (
