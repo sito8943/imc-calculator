@@ -46,7 +46,7 @@ function Sidebar(props) {
     updateAttribute("size", debouncedSize);
   }, [debouncedSize, updateAttribute]);
 
-  const [weight, setWeight] = useState(account?.user?.weigh ?? "");
+  const [weight, setWeight] = useState(account?.user?.weight ?? "");
   const debouncedWeight = useDebounce(weight, 800);
 
   useEffect(() => {
@@ -61,14 +61,6 @@ function Sidebar(props) {
   }, [weight, size]);
 
   const bmiResult = useMemo(() => {
-    console.log(
-      bmi,
-      bmi < 18.5,
-      bmi > 18.5 && bmi < 24.9,
-      bmi > 25 && bmi < 29.9,
-      bmi >= 30
-    );
-
     if (!Number.isNaN(bmi))
       switch (true) {
         case bmi < 18.5:
