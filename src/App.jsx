@@ -8,6 +8,7 @@ import { Handler, Notification, SplashScreen } from "@sito/ui";
 
 // layouts
 import View from "./layouts/View";
+import { useAccount } from "./providers/AccountProvider";
 
 // views
 const Home = loadable(() => import("./views/Home"));
@@ -17,7 +18,10 @@ const NotFound = loadable(() => import("./views/NotFound"));
 const App = () => {
   const [loading, setLoading] = useState(true);
 
+  const { fetchSession } = useAccount();
+
   useEffect(() => {
+    fetchSession();
     setLoading(false);
   }, []);
 
@@ -28,22 +32,22 @@ const App = () => {
           visible={loading}
           logo={
             <div>
-              <h1 className="font-bold text-2xl logo">
-                EatSmart
-              </h1>
+              <h1 className="font-bold text-2xl logo">EatSmart</h1>
             </div>
           }
         />
         <Notification />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<View />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/types/:type" element={<Type />} />
-            </Route>
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        {!loading && (
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<View />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/types/:type" element={<Type />} />
+              </Route>
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        )}
       </Handler>
     </Suspense>
   );
