@@ -1,10 +1,10 @@
-import { faClose } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconButton } from "@sito/ui";
+import { Button } from "@sito/ui";
 import PropTypes from "prop-types";
 import { useCallback, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 function Modal(props) {
+  const { t } = useTranslation();
   const { title, open, handleClose, children } = props;
 
   const handleEscape = useCallback(
@@ -41,6 +41,24 @@ function Modal(props) {
       >
         <h3 className="text-light">{title}</h3>
         <div className="mt-5">{children}</div>
+        <div className="flex items-center justify-end w-full gap-5 mt-5">
+          <Button
+            shape="filled"
+            name={t("_common:names.buttons.ok")}
+            aria-label={t("_common:ariaLabels.buttons.okDialog")}
+          >
+            {t("_common:buttons.ok")}
+          </Button>
+          <Button
+            shape="outlined"
+            color="primary"
+            onClick={handleClose}
+            name={t("_common:names.buttons.cancel")}
+            aria-label={t("_common:ariaLabels.buttons.cancel")}
+          >
+            {t("_common:buttons.cancel")}
+          </Button>
+        </div>
       </dialog>
     </>
   );
