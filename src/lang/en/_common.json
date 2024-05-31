@@ -9,6 +9,8 @@
       "counter": "counter"
     },
     "buttons": {
+      "ok": "ok",
+      "cancel": "cancel",
       "toggleMode": "toggle-mode",
       "back": "back",
       "goHome": "home-link",
@@ -18,6 +20,8 @@
   },
   "ariaLabels": {
     "buttons": {
+      "okDialog": "Click to save dialog operation",
+      "cancel": "Click to cancel current operation",
       "toggleMode": "Click to toggle color mode",
       "back": "Click to go back",
       "goHome": "Click to go home page",
@@ -37,5 +41,8 @@
     "overweight": "Overweight",
     "obesity": "Obesity"
   },
-  "buttons": {}
+  "buttons": {
+    "ok": "Ok",
+    "cancel": "Cancel"
+  }
 }
