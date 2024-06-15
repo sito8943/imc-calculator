@@ -5,10 +5,10 @@ import { useDebounce } from "use-lodash-debounce";
 
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 // @sito/ui
-import { IconButton, InputControl, useMode } from "@sito/ui";
+import { IconButton, InputControl } from "@sito/ui";
 
 // providers
 import { useAccount } from "../../providers/AccountProvider";
@@ -20,7 +20,6 @@ function Sidebar(props) {
   const { t } = useTranslation();
 
   const { account, updateAttribute } = useAccount();
-  const { mode, toggleMode } = useMode();
 
   const { open, onClose } = props;
 
@@ -160,17 +159,6 @@ function Sidebar(props) {
               helperTextClassName={bmiResultStyle}
             />
           </form>
-          <div className="flex items-center justify-start gap-3">
-            <p>{t("_pages:sidebar.mode")}</p>
-            <button
-              className=""
-              onClick={toggleMode}
-              name={t("_common:names.buttons.toggleMode")}
-              aria-label={t("_common:ariaLabels.buttons.toggleMode")}
-            >
-              <FontAwesomeIcon icon={mode === "light" ? faMoon : faSun} />
-            </button>
-          </div>
         </div>
       </aside>
     </div>
