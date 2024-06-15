@@ -14,13 +14,19 @@ import { InputControl } from "@sito/ui";
 // @emotion
 import { css } from "@emotion/css";
 
-import { food } from "../data/types.json";
+// components
 import Modal from "../components/Modal";
+
+// providers
+import { useAccount } from "../providers/AccountProvider";
+
+import { food } from "../data/types.json";
 
 function Type() {
   const { t } = useTranslation();
 
   const { type } = useParams();
+  const { updateAttributes } = useAccount();
 
   const [searchValue, setSearchValue] = useState("");
   const handleSearchValue = (e) => setSearchValue(e.target.value);
@@ -32,11 +38,6 @@ function Type() {
     setModalFood();
   };
 
-  useEffect(() => {
-    if (modalFood) setShowModal(true);
-    else setShowModal(false);
-  }, [modalFood]);
-
   const modalTitle = useMemo(() => {
     if (modalFood) {
       const { type } = modalFood;
@@ -47,11 +48,28 @@ function Type() {
     }
   }, [modalFood, t]);
 
+  useEffect(() => {
+    setCounter(1);
+    if (modalFood) setShowModal(true);
+    else setShowModal(false);
+  }, [modalFood]);
+
   const [counter, setCounter] = useState(1);
+
+  const saveValue = () => {
+    console.log(counter, modalFood);
+    const { calories, carbs, lip, proteins } = modalFood;
+    updateAttributes([{ calories }, { carbs }, { lip }, { proteins }]);
+  };
 
   return (
     <main className="mt-20 p-3 pb-10">
-      <Modal title={modalTitle} open={showModal} handleClose={handleCloseModal}>
+      <Modal
+        title={modalTitle}
+        open={showModal}
+        handleOk={saveValue}
+        handleClose={handleCloseModal}
+      >
         <InputControl
           id="country "
           name={t("_common:names.inputs.counter")}
@@ -59,6 +77,7 @@ function Type() {
           labelClassName="text-light"
           value={counter}
           type="number"
+          color="primary"
           onChange={(e) => setCounter(e.target.value)}
         />
       </Modal>
