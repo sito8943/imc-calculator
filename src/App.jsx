@@ -22,7 +22,9 @@ const App = () => {
 
   useEffect(() => {
     fetchSession();
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }, []);
 
   return (
