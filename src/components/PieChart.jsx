@@ -19,21 +19,21 @@ export function LPieChart(props) {
   return (
     <div>
       <PieChart
-        style={{
-          fontSize: "8px",
-        }}
         data={data}
-        lineWidth={60}
+        lineWidth={20}
         radius={50 - 6}
         segmentsStyle={{ transition: "stroke .3s", cursor: "pointer" }}
         segmentsShift={(index) => (index === selected ? 6 : 1)}
         animate
         label={({ dataEntry }) => Math.round(dataEntry.percentage) + "%"}
-        labelPosition={100 - 60 / 2}
+        labelPosition={60}
+        paddingAngle={18}
+        rounded={true}
         labelStyle={{
-          fill: "#222",
+          fill: "#FFF",
           opacity: 0.75,
           pointerEvents: "none",
+          fontSize: "7px",
         }}
         onClick={(_, index) => {
           setSelected(index === selected ? undefined : index);
