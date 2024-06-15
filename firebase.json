@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "eat-smart",
     "public": "dist",
     "ignore": [
       "firebase.json",
