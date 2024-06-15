@@ -34,6 +34,20 @@ const AccountProvider = (props) => {
     toLocal(config.user, data);
   }, []);
 
+  const updateAttributes = useCallback(
+    (attributes) => {
+      const data = { ...account };
+      if (!data.user) data.user = {};
+      attributes.forEach((attribute) => {
+        const [key] = Object.keys(attribute);
+        if (data.user[key]) data.user[key] += attribute[key];
+        else data.user[key] = attribute[key];
+      });
+      toLocal(config.user, data);
+    },
+    [account]
+  );
+
   const updateAttribute = useCallback(
     (attribute, value) => {
       const data = { ...account };
@@ -66,6 +80,7 @@ const AccountProvider = (props) => {
     updateUser,
     fetchSession,
     updateAttribute,
+    updateAttributes,
   };
   return (
     <AccountContext.Provider value={value}>{children}</AccountContext.Provider>
