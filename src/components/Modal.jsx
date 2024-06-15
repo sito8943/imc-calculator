@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 function Modal(props) {
   const { t } = useTranslation();
-  const { title, open, handleClose, children } = props;
+  const { title, open, handleOk, handleClose, children } = props;
 
   const handleEscape = useCallback(
     (e) => {
@@ -44,6 +44,10 @@ function Modal(props) {
         <div className="flex items-center justify-end w-full gap-5 mt-5">
           <Button
             shape="filled"
+            onClick={() => {
+              handleOk();
+              handleClose();
+            }}
             name={t("_common:names.buttons.ok")}
             aria-label={t("_common:ariaLabels.buttons.okDialog")}
           >
@@ -52,6 +56,7 @@ function Modal(props) {
           <Button
             shape="outlined"
             color="primary"
+            className="!text-white"
             onClick={handleClose}
             name={t("_common:names.buttons.cancel")}
             aria-label={t("_common:ariaLabels.buttons.cancel")}
@@ -68,6 +73,7 @@ Modal.propTypes = {
   open: PropTypes.bool,
   children: PropTypes.any,
   handleClose: PropTypes.func,
+  handleOk: PropTypes.func,
   title: PropTypes.string,
 };
 
