@@ -26,7 +26,7 @@ export function LPieChart(props) {
         segmentsShift={(index) => (index === selected ? 6 : 1)}
         animate
         label={({ dataEntry }) => Math.round(dataEntry.percentage) + "%"}
-        labelPosition={60}
+        labelPosition={70}
         paddingAngle={18}
         rounded={true}
         labelStyle={{
