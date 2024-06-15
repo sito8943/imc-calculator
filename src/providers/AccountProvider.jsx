@@ -35,13 +35,19 @@ const AccountProvider = (props) => {
   }, []);
 
   const updateAttributes = useCallback(
-    (attributes) => {
+    (attributes, food, counter) => {
       const data = { ...account };
+      const thisDay = new Date().getDate();
       if (!data.user) data.user = {};
       attributes.forEach((attribute) => {
         const [key] = Object.keys(attribute);
-        if (data.user[key]) data.user[key] += attribute[key];
-        else data.user[key] = attribute[key];
+        if (data.user[key]) data.user[key] += attribute[key] * counter;
+        else data.user[key] = attribute[key] * counter;
+        if (!data.user.logs) {
+          data.user.logs = {};
+          data.user.logs[thisDay] = [];
+        }
+        data.user.logs[thisDay].push([{ food, counter }]);
       });
       toLocal(config.user, data);
     },

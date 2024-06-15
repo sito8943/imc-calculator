@@ -57,9 +57,12 @@ function Type() {
   const [counter, setCounter] = useState(1);
 
   const saveValue = () => {
-    console.log(counter, modalFood);
     const { calories, carbs, lip, proteins } = modalFood;
-    updateAttributes([{ calories }, { carbs }, { lip }, { proteins }]);
+    updateAttributes(
+      [{ calories }, { carbs }, { lip }, { proteins }],
+      modalFood.name,
+      counter
+    );
   };
 
   return (
