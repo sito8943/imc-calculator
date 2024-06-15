@@ -22,11 +22,10 @@ export function LPieChart(props) {
         data={data}
         lineWidth={20}
         radius={50 - 6}
-        segmentsStyle={{ transition: "stroke .3s", cursor: "pointer" }}
-        segmentsShift={(index) => (index === selected ? 6 : 1)}
+        segmentsStyle={{ transition: "stroke .3s" }}
         animate
         label={({ dataEntry }) => Math.round(dataEntry.percentage) + "%"}
-        labelPosition={70}
+        labelPosition={60}
         paddingAngle={18}
         rounded={true}
         labelStyle={{
