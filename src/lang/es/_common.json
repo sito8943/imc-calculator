@@ -1,4 +1,50 @@
 {
-  "ariaLabels": {},
-  "buttons": {}
+  "names": {
+    "inputs": {
+      "userName": "nombre-de-usuario",
+      "height": "altura",
+      "weight": "peso",
+      "bmi": "IMC",
+      "search": "buscar",
+      "counter": "contador"
+    },
+    "buttons": {
+      "ok": "aceptar",
+      "cancel": "cancelar",
+      "toggleMode": "alternar-modo",
+      "resetStats": "restablecer-estadísticas",
+      "back": "volver",
+      "goHome": "ir-a-inicio",
+      "closeMenu": "cerrar-menú",
+      "userMenu": "menú-de-usuario"
+    }
+  },
+  "ariaLabels": {
+    "buttons": {
+      "okDialog": "Clic para guardar la operación de diálogo",
+      "cancel": "Clic para cancelar la operación actual",
+      "toggleMode": "Clic para alternar el modo de color",
+      "resetStats": "Clic para restablecer tus estadísticas actuales",
+      "back": "Clic para volver atrás",
+      "goHome": "Clic para ir a la página de inicio",
+      "closeMenu": "Clic para cerrar el menú de usuario",
+      "userMenu": "Clic para abrir el menú de usuario"
+    }
+  },
+  "noName": "Sin nombre",
+  "types": {
+    "eat": "Contar",
+    "drink": "Litros",
+    "portion": "Porciones"
+  },
+  "bmiResults": {
+    "underweight": "Bajo peso",
+    "normal": "Peso normal",
+    "overweight": "Sobrepeso",
+    "obesity": "Obesidad"
+  },
+  "buttons": {
+    "ok": "Aceptar",
+    "cancel": "Cancelar"
+  }
 }

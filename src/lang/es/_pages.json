@@ -3,10 +3,62 @@
     "home": "Inicio"
   },
   "notFound": {
-    "goHome": "Ir al inicio",
-    "body": "No se encuentra la página"
+    "goHome": "Ir a Inicio",
+    "body": "¡Ups! Página no encontrada"
+  },
+  "sidebar": {
+    "mode": "Modo de color de la aplicación",
+    "inputs": {
+      "userName": {
+        "name": "nombre-de-usuario",
+        "placeholder": "ej: Jorge Pérez"
+      },
+      "height": {
+        "name": "altura",
+        "label": "Altura (m)"
+      },
+      "weight": {
+        "name": "peso",
+        "label": "Peso (kg)"
+      },
+      "bmi": {
+        "name": "IMC",
+        "label": "IMC"
+      }
+    }
   },
   "home": {
-    "welcome": "Bienvenido"
+    "welcome": "Bienvenido",
+    "legend": "Leyenda",
+    "types": {
+      "breakfast": "Desayuno",
+      "lunch": "Almuerzo",
+      "dinner": "Cena",
+      "snaps": "Bocadillos"
+    },
+    "points": {
+      "calories": "Calorías",
+      "proteins": "Proteínas",
+      "lipids": "Lípidos",
+      "carbohydrates": "Carbohidratos"
+    },
+    "noData": "No hay datos registrados",
+    "moreInfo": "Más información"
+  },
+  "type": {
+    "title": "¿Sabías?",
+    "search": {
+      "placeholder": "escribe aquí para buscar..."
+    },
+    "modal": {
+      "eat": "¿Cuántos {{food}} has comido?",
+      "drink": "¿Cuántos {{food}} has bebido?"
+    },
+    "types": {
+      "breakfast": "¿Qué desayunaste hoy?",
+      "lunch": "¿Qué almuerzo tuviste hoy?",
+      "dinner": "¿Qué cena tuviste hoy?",
+      "snaps": "¿Qué bocadillos has tenido hoy?"
+    }
   }
 }
