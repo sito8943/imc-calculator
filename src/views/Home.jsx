@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,6 +16,8 @@ import Legend from "../components/Legend";
 // providers
 import { useAccount } from "../providers/AccountProvider";
 
+const thisDay = new Date().getDate();
+
 function Home() {
   const { t } = useTranslation();
 
@@ -23,10 +25,22 @@ function Home() {
 
   const legend = useMemo(() => {
     return [
-      { label: t("_pages:home.points.calories"), color: "#FF3D22" },
-      { label: t("_pages:home.points.proteins"), color: "#0ECC7A" },
-      { label: t("_pages:home.points.lipids"), color: "#4082DE" },
-      { label: t("_pages:home.points.carbohydrates"), color: "#A6A600" },
+      {
+        id: "calories",
+        label: t("_pages:home.points.calories"),
+        color: "#FF3D22",
+      },
+      {
+        id: "proteins",
+        label: t("_pages:home.points.proteins"),
+        color: "#0ECC7A",
+      },
+      { id: "lip", label: t("_pages:home.points.lipids"), color: "#4082DE" },
+      {
+        id: "carbs",
+        label: t("_pages:home.points.carbohydrates"),
+        color: "#A6A600",
+      },
     ];
   }, [t]);
 
@@ -55,6 +69,13 @@ function Home() {
     ],
     [account, t]
   );
+
+  useEffect(() => {
+    if (!account?.user?.logs || !account.user.logs[thisDay]) {
+      resetData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account.user.logs, thisDay]);
 
   return (
     <main className="w-[90%] mx-auto mt-20 pt-3 pb-10">
@@ -86,7 +107,11 @@ function Home() {
               <div className="flex flex-col items-start justify-start gap-1 mt-10">
                 <h3>{t("_pages:home.legend")}</h3>
                 {legend.map((legend) => (
-                  <Legend key={legend.color} {...legend} />
+                  <Legend
+                    key={legend.color}
+                    color={legend.color}
+                    label={`${legend.label} (${account?.user[legend.id]})`}
+                  />
                 ))}
               </div>
             </>
