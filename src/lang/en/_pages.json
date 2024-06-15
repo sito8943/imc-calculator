@@ -29,6 +29,7 @@
   },
   "home": {
     "welcome": "Welcome",
+    "legend": "Legend",
     "types": {
       "breakfast": "Breakfast",
       "lunch": "Lunch",
