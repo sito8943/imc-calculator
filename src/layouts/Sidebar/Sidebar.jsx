@@ -36,7 +36,8 @@ function Sidebar(props) {
 
   useEffect(() => {
     updateAttribute("userName", debouncedUserName);
-  }, [debouncedUserName, updateAttribute]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedUserName]);
 
   // form
   const [height, setHeight] = useState(account?.user?.height ?? "");
@@ -44,19 +45,22 @@ function Sidebar(props) {
 
   useEffect(() => {
     updateAttribute("height", debouncedHeight);
-  }, [debouncedHeight, updateAttribute]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedHeight]);
 
   const [weight, setWeight] = useState(account?.user?.weight ?? "");
   const debouncedWeight = useDebounce(weight, 800);
 
   useEffect(() => {
     updateAttribute("weight", debouncedWeight);
-  }, [debouncedWeight, updateAttribute]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedWeight]);
 
   const [bmi, setBmi] = useState(account?.user?.bmi ?? "");
   const debouncedBmi = useDebounce(bmi, 800);
 
   useEffect(() => {
+    console.log("bmi");
     setBmi(weight / (height * height));
   }, [weight, height]);
 
@@ -89,7 +93,8 @@ function Sidebar(props) {
 
   useEffect(() => {
     updateAttribute("bmi", debouncedBmi);
-  }, [debouncedBmi, updateAttribute]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedBmi]);
 
   return (
     <div
