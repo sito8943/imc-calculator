@@ -22,7 +22,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/poppins/700.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ModeProvider>
+  <ModeProvider defaultMode="dark">
     <StyleProvider>
       <NotificationProvider>
         <AccountProvider>
