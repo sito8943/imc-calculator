@@ -34,6 +34,17 @@ const AccountProvider = (props) => {
     toLocal(config.user, data);
   }, []);
 
+  const resetData = useCallback(() => {
+    const data = { ...account };
+    if (!data.user) data.user = {};
+    data.user.calories = 0;
+    data.user.proteins = 0;
+    data.user.lib = 0;
+    data.user.carbs = 0;
+    toLocal(config.user, data);
+    setAccount(data);
+  }, [account]);
+
   const updateAttributes = useCallback(
     (attributes, food, counter) => {
       const data = { ...account };
@@ -50,6 +61,7 @@ const AccountProvider = (props) => {
         data.user.logs[thisDay].push([{ food, counter }]);
       });
       toLocal(config.user, data);
+      setAccount(data);
     },
     [account]
   );
@@ -63,6 +75,7 @@ const AccountProvider = (props) => {
         data.user[attribute] = value;
       }
       toLocal(config.user, data);
+      setAccount(data);
     },
     [account]
   );
@@ -83,6 +96,7 @@ const AccountProvider = (props) => {
 
   const value = {
     account,
+    resetData,
     updateUser,
     fetchSession,
     updateAttribute,
