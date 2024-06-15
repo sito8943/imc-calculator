@@ -16,7 +16,7 @@ function Home() {
     <main className="w-[95%] mx-auto mt-20 pt-3 pb-10">
       <section id="pie-chart" className="w-full">
         <div className="flex flex-col items-start justify-start gap-5 w-full">
-          <h2 className="text-primary text-3xl sm:text-xl">
+          <h2 className="text-light text-3xl sm:text-xl">
             {t("_pages:home.welcome")} {account?.user?.userName ?? t("_common:noName")}
           </h2>
           {account?.user?.calories ||
@@ -28,7 +28,7 @@ function Home() {
                 data={[
                   {
                     title: t("_pages:home.points.calories"),
-                    value: account?.user?.calories ?? 0,
+                    value: account?.user?.calories  ?? 0,
                     color: "#FFC745",
                   },
                   {
@@ -38,12 +38,12 @@ function Home() {
                   },
                   {
                     title: t("_pages:home.points.lipids"),
-                    value: account?.user?.lib ?? 0,
+                    value: account?.user?.lip ?? 0,
                     color: "#FEB1C0",
                   },
                   {
                     title: t("_pages:home.points.carbohydrates"),
-                    value: account?.user?.lib ?? 0,
+                    value: account?.user?.carbs ?? 0,
                     color: "#FEB1C0",
                   },
                 ]}
