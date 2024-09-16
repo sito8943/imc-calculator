@@ -10,7 +10,12 @@ function Modal(props) {
   const handleEscape = useCallback(
     (e) => {
       const { key } = e;
+      console.log(key, key === "Enter");
       if (key === "Escape") handleClose();
+      if (key === "Enter") {
+        handleOk();
+        handleClose();
+      }
     },
     [handleClose]
   );
@@ -41,13 +46,18 @@ function Modal(props) {
       >
         <h3 className="text-light">{title}</h3>
         <div className="mt-5">{children}</div>
-        <div className="flex items-center justify-end w-full gap-5 mt-5">
+        <form
+          onSubmit={(e) => {
+            console.log("hola");
+            handleOk();
+            handleClose();
+            e.preventDefault();
+          }}
+          className="flex items-center justify-end w-full gap-5 mt-5"
+        >
           <Button
             shape="filled"
-            onClick={() => {
-              handleOk();
-              handleClose();
-            }}
+            type="submit"
             name={t("_common:names.buttons.ok")}
             aria-label={t("_common:ariaLabels.buttons.okDialog")}
           >
@@ -55,6 +65,7 @@ function Modal(props) {
           </Button>
           <Button
             shape="outlined"
+            type="button"
             color="primary"
             className="!text-white"
             onClick={handleClose}
@@ -63,7 +74,7 @@ function Modal(props) {
           >
             {t("_common:buttons.cancel")}
           </Button>
-        </div>
+        </form>
       </dialog>
     </>
   );
