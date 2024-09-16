@@ -10,14 +10,14 @@ function Modal(props) {
   const handleEscape = useCallback(
     (e) => {
       const { key } = e;
-      console.log(key, key === "Enter");
+
       if (key === "Escape") handleClose();
       if (key === "Enter") {
         handleOk();
         handleClose();
       }
     },
-    [handleClose]
+    [handleClose, handleOk]
   );
 
   useEffect(() => {
